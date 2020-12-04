@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Login Page</title>
+        <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bug Tracker Software</a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a th:href="@{/register}" class="nav-link">Register</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/list_user}">Lists of Users</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="container text-center">
+            <div class="m-3">
+                <h3>Registration!</h3>
+            </div>
+            <form th:action="@{/process_registor}" method="post" style="max-width: 600px; margin: 0 auto;" th:object="${user}">
+                <div class="border border-secondary rounded p-3">
+                    <div>
+                        <p>
+                            <input placeholder="Enter your Firstname"  type="text" id="firstname" name="firstname" autofocus="autofocus" class="form-control" th:field="*{firstname}" required minlength="2" maxlenghth="15" />
+                        </p>
+
+                        <p>
+                            <input placeholder="Enter your Lastname"   type="text" id="lastname" name="lastname" autofocus="autofocus" class="form-control" th:field="*{lastname}" required minlength="2" maxlenghth="15" />
+                        </p>
+
+                        <p>
+                            <input placeholder="Enter your Email" type="email" id="lastname" name="email" autofocus="autofocus" class="form-control" th:field="*{email}" required />
+                        </p>
+                        <p>
+                            <input placeholder="Enter your Password " type="password" id="password" name="password" autofocus="autofocus" class="form-control" th:field="*{password}" required minlength="6" maxlenghth="12" />
+                        </p>
+                        <br />
+                        <p>
+                            <input type="submit" value="Sing up" class="btn btn-danger" />
+                        </p>
+                    </div>
+                </div>
+            </form>
+            <br />
+            <br />
+            <a th:href="@{/login}" class="error"> Already have any account, please Sign in</a>
+        </div>
+    </body>
+</html>

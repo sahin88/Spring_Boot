@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+<link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Bug Tracker Software</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+      <form th:action="@{/logout}" method="post"  name="logoutform">
+			
+		   	<div>
+		   	 	<input type="submit" value="Logout" class="btn btn-primary"/>
+		   	 </div>
+		  </form>	
+      </li>
+        <li class="nav-item active">
+        <a th:href="@{/register}" class="nav-link">Register</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" th:href="@{/list_user}" >Lists of Users</a>
+      </li>
+    
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="container text-center">
+<div class="m-3">
+	<h3> Users listtt </h3>
+	
+						
+					<div>
+					<table class="table table-hover">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th >User Id</th>
+					      <th >First Name</th>
+					      <th >Last Name </th>
+					      <th >Email</th>
+					      <th >Update</th>
+					      <th >Delete</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="user: ${Listusers}" >
+					      <td th:text="${user.Id}">User Id</td>
+					      <td th:text="${user.firstname}">First Name</td>
+					      <td th:text="${user.lastname}">Last Name</td>
+					      <td  th:text="${user.email}">Email</td>
+					       <td><a th:href="@{/login}" class="btn btn-success"> Update</a></td>
+					       <td><a th:href="@{/login}" class="btn btn-danger"> Delete</a></td>
+					    </tr>
+					  
+					  </tbody>
+					</table>
+				</div>
+			
+				</div>
+			</div>
+</body>
+</html>
